@@ -1,0 +1,75 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>CanvasJS Chart jQuery Plugin</title>
+<style>
+ 
+	.x-axis{
+		font-size:30px;
+		color:teal;
+		font-family:Arial, Helvetica, sans-serif;
+	}
+	
+	.y-axis{
+		font-size:20px;
+		color:teal;
+		font-family:Arial, Helvetica, sans-serif;
+	}
+	
+
+</style>
+<script type="text/javascript" src="canvasjs-1.9.6 (1)/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="canvasjs-1.9.6 (1)/jquery.canvasjs.min.js"></script>
+<script type="text/javascript">
+
+			
+
+$(function () {
+
+	//Better to construct options first and then pass it as a parameter
+	var options = {
+		exportEnabled: true,
+                animationEnabled: true,
+		title: {
+			text: "Exporting Chart as Image"
+		},
+		data: [
+		{
+			type: "bar", //change it to line, area, bar, pie, etc
+			dataPoints: [
+				{ x:2.2 , y: 0},
+				{ x: 3.5, y:1 },
+				{ x: 2.5, y: 2 },
+				{ x: 4.5, y: 3 },
+				{ x: 2.9, y: 4 },
+				{ x: 5.7, y: 5},
+				{ x: 3.5, y: 6 },
+				{ x: 2.7, y: 7 },
+				{ x: 4.5, y: 8 }
+
+				
+
+				
+			
+
+			]
+		}
+		]	};
+
+	$("#chartContainer").CanvasJSChart(options);
+
+});
+
+</script>
+</head>
+<body >
+                    
+  <div> <a href="index.html" style="font-size:25px ;background-color:#18bc9c;color:white">HOME</a></div>              
+<div class="y-axis"> <p align="left"><b>PARKING SLOT NO</b></p></div>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<div class="x-axis"> <p align="center"><b>TIME</b></p></div>
+</body>
+
+</html>

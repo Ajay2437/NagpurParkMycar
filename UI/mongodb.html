@@ -1,0 +1,328 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="bootstrap.min.js"></script>
+   <!--     <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+        <script src='/js/index.js'></script>-->
+        <script src = 'parkingLot.js'></script>
+      <script src="jquery-ui.js"></script>
+        <link rel="stylesheet" href="jquery-ui.css">
+        <link rel="stylesheet" href="headerSection.css">
+        <style>
+            div.statistics{
+                width: 800px;
+                height: 200px;
+                opacity: 10%;
+                position: relative;
+                margin: 20px auto;
+                margin-top: 170px;           }
+            div.statistics {
+               opacity: 0.85;
+                background-color: white;
+            }
+            .canvasjs-chart-credit {
+                display: none;
+            }
+        </style>
+        <script>
+            $( document ).ready(function() {
+                $("#yearPicker").hide(); 
+                var $contents = $('.tab-content');
+                $contents.slice(1).hide();
+                $('.tab').click(function() {
+                  var $target = $('#' + this.id + 'show').show();
+                  $contents.not($target).hide();
+                    $("#chartMenu").html($(this).text() + ' <span class="caret"></span>');    
+                    if(this.id=="tab1"){
+                    $("#dateTimePicker").show();
+                    $("#yearPicker").hide();
+                }else if(this.id=="tab2"){
+                    $("#dateTimePicker").hide();
+                    $("#yearPicker").show();
+                }
+                else{
+                    $("#dateTimePicker").hide();
+                    $("#yearPicker").hide();        
+                }
+                });
+            });
+        </script>
+        
+         <script type="text/javascript" src="canvasjs.min.js"></script>
+  <script type="text/javascript">
+	window.onload = function () {
+		var chart1 = new CanvasJS.Chart("tab1show",
+		{
+            width: 800,
+			title:{
+				text: "Daily Parking Report"
+			},   
+                        animationEnabled: true,  
+			axisY:{ 
+				title: "No Of Vehicles",
+				includeZero: true,
+                interval: 5,
+                maximum: 20
+			},
+			axisX: {
+				title: "Time",
+                labelAngle: -80,
+				interval: 1, 
+                //minimum: 1,
+                includeZero: true
+			},
+			toolTip: {
+				shared: true,
+				content: function(e){
+					var body = new String;
+					var head ;
+					for (var i = 0; i < e.entries.length; i++){
+						var  str = "<span style= 'color:"+e.entries[i].dataSeries.color + "'> " + e.entries[i].dataSeries.name + "</span>: <strong>"+  e.entries[i].dataPoint.y + "</strong>'' <br/>" ; 
+						body = body.concat(str);
+					}
+					head = "<span style = 'color:DodgerBlue; '><strong>"+ (e.entries[0].dataPoint.label) + "</strong></span><br/>";
+
+					return (head.concat(body));
+				}
+			},
+			data: [
+			{        
+				type: "spline",
+				showInLegend: false,
+				name: "DailyReport",
+				dataPoints: [
+                {label: "12am" , y: 3.92} ,
+				{label: "1am" , y: 3.92} ,     
+				{label: "2am" , y: 3.31} ,     
+				{label: "3am" , y: 3.85} ,     
+				{label: "4am" , y: 3.60} ,     
+				{label: "5am" , y: 3.24} ,     
+				{label: "6am" , y: 3.22} ,     
+				{label: "7am" , y: 3.06} ,     
+				{label: "8am" , y: 3.37} ,     
+				{label: "9am" , y: 3.47} ,     
+				{label: "10am" , y: 3.79} ,     
+				{label: "11am" , y: 3.98} ,     
+				{label: "12pm" , y: 3.73} ,
+                {label: "1pm" , y: 3.92} ,     
+				{label: "2pm" , y: 3.31} ,     
+				{label: "3pm" , y: 3.85} ,     
+				{label: "4pm" , y: 3.60} ,     
+				{label: "5pm" , y: 3.24} ,     
+				{label: "6pm" , y: 3.22} ,     
+				{label: "7pm" , y: 3.06} ,     
+				{label: "8pm" , y: 3.37} ,     
+				{label: "9pm" , y: 3.47} ,     
+				{label: "10pm" , y: 3.79} ,     
+				{label: "11pm" , y: 3.98} 
+				]
+			},
+			],
+		});
+        var chart2 = new CanvasJS.Chart("tab2show",
+		{
+            width: 800,
+			title:{
+				text: "Monthly Parking Report"
+			},   
+                        animationEnabled: true,  
+			axisY:{ 
+				title: "No Of Vehicles",
+				includeZero: true,
+                interval: 20,
+                maximum: 200
+			},
+			axisX: {
+				title: "Months",
+                labelAngle: -80,
+				interval: 1, 
+                minimum: 1,
+                includeZero: true
+			},
+			toolTip: {
+				shared: true,
+				content: function(e){
+					var body = new String;
+					var head ;
+					for (var i = 0; i < e.entries.length; i++){
+						var  str = "<span style= 'color:"+e.entries[i].dataSeries.color + "'> " + e.entries[i].dataSeries.name + "</span>: <strong>"+  e.entries[i].dataPoint.y + "</strong>'' <br/>" ; 
+						body = body.concat(str);
+					}
+					head = "<span style = 'color:DodgerBlue; '><strong>"+ (e.entries[0].dataPoint.label) + "</strong></span><br/>";
+
+					return (head.concat(body));
+				}
+			},
+			data: [
+			{        
+				type: "spline",
+				showInLegend: false,
+				name: "DailyReport",
+				dataPoints: [
+                {label: "January" , y: 92} ,
+				{label: "February" , y: 82} ,     
+				{label: "March" , y: 121} ,     
+				{label: "April" , y: 100} ,     
+				{label: "May" , y: 185} ,     
+				{label: "June" , y: 170} ,     
+				{label: "July" , y: 165} ,     
+				{label: "August" , y: 182} ,     
+				{label: "September" , y: 194} ,     
+				{label: "October" , y: 178} ,     
+				{label: "November" , y: 165} ,     
+				{label: "December" , y: 154}
+				]
+			},
+			],
+		});
+        var chart3 = new CanvasJS.Chart("tab3show",
+		{
+            width: 800,
+			title:{
+				text: "Yearly Parking Report"
+			},   
+                        animationEnabled: true,  
+			axisY:{ 
+				title: "No Of Vehicles",
+				includeZero: true,
+                interval: 300,
+                maximum: 3000
+			},
+			axisX: {
+				title: "Year",
+                labelAngle: -80,
+				interval: 1, 
+                minimum: 1,
+                includeZero: true
+			},
+			toolTip: {
+				shared: true,
+				content: function(e){
+					var body = new String;
+					var head ;
+					for (var i = 0; i < e.entries.length; i++){
+						var  str = "<span style= 'color:"+e.entries[i].dataSeries.color + "'> " + e.entries[i].dataSeries.name + "</span>: <strong>"+  e.entries[i].dataPoint.y + "</strong>'' <br/>" ; 
+						body = body.concat(str);
+					}
+					head = "<span style = 'color:DodgerBlue; '><strong>"+ (e.entries[0].dataPoint.label) + "</strong></span><br/>";
+
+					return (head.concat(body));
+				}
+			},
+			data: [
+			{        
+				type: "spline",
+				showInLegend: false,
+				name: "DailyReport",
+				dataPoints: [
+				{label: "2008" , y: 992} ,     
+				{label: "2009" , y: 1131} ,     
+				{label: "2010" , y: 985} ,     
+				{label: "2011" , y: 1460} ,     
+				{label: "2012" , y: 1324} ,     
+				{label: "2013" , y: 1522} ,     
+				{label: "2014" , y: 1606} ,     
+				{label: "2015" , y: 1637} ,     
+				{label: "2016" , y: 1547} ,     
+				{label: "2017" , y: 1879} ,     
+				]
+			},
+			],
+		});
+
+         chart1.render();
+         chart2.render();
+         chart3.render();
+    }
+    </script>
+        
+        
+        
+    </head>
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+        <nav class="navbar navbar-inverse navbar-fixed-top"> 
+              <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>                        
+                  </button>
+                    <img id = "logo" src = "images/logo5.gif">
+                    <img id = "titleLogo" src = "images/parkMyCar.png">
+                </div>
+                <div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav" id="tabList">
+                      <li><a href="#section1">Section 1</a></li>
+                      <li ><a href="#section2">Section 2</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        </nav> 
+        <div id = "main">
+            <div style = "padding-top:100px; " id="section1">
+                <table id = "parkingLot">
+                    <tr >
+                        <td class="tdRow1"><img class = "vCar" src = "images/car2.png"></td>
+                        <td id="tdSlot1"  class="tdRow1" style="width:112px; background-color:rgba(0,255,0,0.25);"><img id = "slot1" style="display:none;"  class = "vCar" src = "images/car2.png"></td>
+                        <td class="tdRow1"><img class = "vCar"  src = "images/car2.png"></td>
+                        <td class="tdRow1"><img class = "vCar" src = "images/car2.png"></td>
+                        <td id="tdSlot2"  class="tdRow1" style="width:112px;background-color:rgba(0,255,0,0.25);"><img id = "slot2" style="display:none;" class = "vCar" src = "images/car2.png"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td style = "height: 90px; border-left:1px solid white; " colspan = "2"></td>
+                        <td></td>
+                        <td style = "height: 90px;border-right:1px solid white;" colspan = "2"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="tdRC2"  colspan = "2"><img class = "hCar" src = "images/car2_horizontal_left.png"></td>
+                        <td> </td>
+                        <td class="tdRC3" colspan = "2"><img id = "slot2" class = "hCar" src = "images/car2_horizontal_right.png"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="tdRC2" colspan = "2"><img class = "hCar" src = "images/car2_horizontal_left.png"></td>
+                        <td style="border-bottom:1px solid white;"></td>
+                        <td class="tdRC3" style="width:140px; background-color:rgba(0,255,0,0.25)" id="tdSlot3" colspan = "2"><img id = "slot3" style="display:none;" class = "hCar" src = "images/car2_horizontal_right.png"></td>
+                    </tr>
+                    
+                </table>
+            </div>
+            
+            <div id="section2">   
+               <div class="statistics">
+                   <ul class="nav nav-tabs">
+                        <li class="dropdown active">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="chartMenu">Daily <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a  id="tab1" class="tab">Daily</a></li>
+                                <li><a  id="tab2" class="tab">Monthly</a></li>
+                                <li><a  id="tab3" class="tab">Yearly</a></li>                        
+                            </ul>
+                        </li>
+                        <li style="top:10px; left:480px;" class="active" id="dateTimePicker">Pick Date<input type="date" name="day"> <span class="glyphicon glyphicon-search" onclick="alert('hey')"></span></li>
+                        <li style="top:10px; left:420px;" class="active" id="yearPicker">Enter Year<input type="text" name="year"> <span class="glyphicon glyphicon-search" onclick="alert('hey')"></span></li>
+                    </ul>
+                    <div id="tab1show" class="tab-content" style="height:400px; width: 800px">
+                    </div>
+                    <div id="tab2show" class="tab-content" style="height:400px; width: 800px">
+                      test 2
+                    </div>
+                    <div id="tab3show" class="tab-content" style="height:400px; width: 800px">
+                      test 3
+                    </div>
+                </div>  
+            </div>
+            
+        </div>
+    </body>
+</html>

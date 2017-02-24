@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Chart</title>
+    
+    <style>
+ 
+	#daily .x-axis{
+		font-size:30px;
+		color:teal;
+		font-family:Arial, Helvetica, sans-serif;
+	}
+	
+</style>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    
+    
+
+    
+    <script type="text/javascript" src="D:/Front End/startbootstrap-freelancer-master/startbootstrap-freelancer-master/canvasjs-1.9.6 (1)/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="D:/Front End/startbootstrap-freelancer-master/startbootstrap-freelancer-master/canvasjs-1.9.6 (1)/jquery.canvasjs.min.js"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="html5shiv.js"></script>
+        <script src="respond.min.js"></script>
+    <![endif]-->
+    
+    <script type="text/javascript">
+    /*
+    
+    	var xhr= new XMLHttpRequest();
+			xhr.addEventListener("readystatechange",changeHandler);
+  			window.onload=function(){
+  		
+  		  		xhr.open("get","http://54.89.16.117:8080/hello",true);
+  		  		
+  		  		  setInterval(function(){
+  		  		  xhr.open("get","http://54.89.16.117:8080/hello",true);
+
+  		  		  xhr.send();
+  		  		  },1000)			
+  					
+
+  				
+		}  	
+	var data;
+
+	function  changeHandler(){
+
+			if (xhr.readyState==4 && xhr.status==200){
+           			data=xhr.responseText;
+           			console.log(data);
+     			}
+     	}      				
+
+
+*/
+
+
+
+
+$(function () {
+
+	//Better to construct options first and then pass it as a parameter
+	var options = {
+		exportEnabled: true,
+        animationEnabled: true,
+		title: {
+			text: "Exporting Chart as Image"
+		},
+		data: [
+		{
+			type: "splineArea", //change it to line, area, bar, pie, etc
+			dataPoints: [
+				{ x: 0, y: 1 },
+				{ x: 1, y: 2 },
+				{ x: 2, y: 3.5 },
+				{ x: 3, y: 2.5 },
+				{ x: 4, y: 4 },
+				{ x: 5, y: 8 },
+				{ x: 6, y: 7.5 },
+				{ x: 7, y: 6 }
+				
+			]
+		}
+		]	};
+
+	$("#chartContainer").CanvasJSChart(options);
+
+});
+
+    
+    
+    </script>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="Welcome.html">Home</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#daily">Daily Analysis</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#monthly">Monthly Analysis</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#yearly">Yearly Analysis</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Start Bootstrap</span>
+                        <hr class="star-light">
+                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 	Daily Section -->
+    <section id="daily">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Daily Analysis</h2>
+                    <hr class="star-primary">
+                    <br> 
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<div class="x-axis"> <p align="center"><b>SLOT NO</b></p></div>
+
+                </div>
+            </div>
+            <div class="row">
+                               
+
+
+        </div>
+                
+       </div> 
+    </section>
+
+    <!-- Monthly Section -->
+    <section class="success" id="monthly">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Monthly Analysis</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+               </div>
+               </div>
+    </section>
+
+    <!-- Yearly Section -->
+    <section id="yearly">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Yearly Analysis</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+              </div>
+        </div>
+    </section>
+
+    
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+   
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,744 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Smart Parking</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="html5shiv.js"></script>
+        <script src="respond.min.js"></script>
+        <script src="data.txt"></script>
+    <![endif]-->
+    
+    <!--Floor 1 Style-->
+	<style>
+		
+	
+		#portfolio .box {
+			width: 80px;
+			height: 60px;
+			background-color:green;
+			margin-left: 20px;
+			border: 2px solid black;
+		}
+		
+		#portfolio .box101 {
+			width: 80px;
+			height: 60px;
+			background-color:#990000;
+			margin-left: 20px;
+			border: 2px solid black;
+		}
+
+		#portfolio .fubox {
+			width: 150px;
+			height: 50px;
+			background-color:yellow;
+			margin:auto;
+			
+	
+		}
+
+		#portfolio .box2 {
+			width: 80px;
+			height: 80px;
+			background-color: white;
+			margin: 5px;
+		}
+		
+		#portfolio .box22 {
+			width: 80px;
+			height: 80px;
+			background-color: white;
+			margin: 10px;
+			border-left: dashed;
+			border-left-color: red;
+		}
+		
+		#portfolio .box3 {
+			width: 88px;
+			height: 80px;
+			background-color: white;
+			border-left: dashed;
+			border-color: black;
+			margin: 5px;
+			border-right: dashed;
+			border-right-color: red;
+		}
+		
+		#portfolio .box4 {
+			width: 80px;
+			height: 80px;
+			background-color: white;
+			border-left: dashed;
+			border-color: black;
+			margin: 5px;
+		}
+		
+		</style>
+	
+	<!--Floor 2 Style-->
+	<style>
+		#portfolio1 .box {
+			width: 80px;
+			height: 60px;
+			background-color:green;
+			margin-left: 20px;
+			border: 2px solid black;
+		}
+		#portfolio1 .box101 {
+			width: 80px;
+			height: 60px;
+			background-color:#990000;
+			margin-left: 20px;
+			border: 2px solid black;
+		}
+
+		
+		#portfolio1 .box2 {
+			width: 80px;
+			height: 80px;
+			background-color: white;
+			margin: 5px;
+		}
+		
+		#portfolio1 .box22 {
+			width: 80px;
+			height: 80px;
+			background-color: white;
+			margin: 10px;
+			border-left: dashed;
+			border-left-color: red;
+		}
+		
+		#portfolio1 .box3 {
+			width: 88px;
+			height: 80px;
+			background-color: white;
+			border-left: dashed;
+			border-color: black;
+			margin: 5px;
+			border-right: dashed;
+			border-right-color: red;
+		}
+		
+		#portfolio1 .box4 {
+			width: 80px;
+			height: 80px;
+			background-color: white;
+			border-left: dashed;
+			border-color: black;
+			margin: 5px;
+		}
+		
+		.dropbtn {
+    background-color:#2c3e50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #18bc9c;
+}
+		
+		
+		
+				
+	</style>
+	<script type="text/javascript" src="D:/Front End/startbootstrap-freelancer-master/startbootstrap-freelancer-master/canvasjs-1.9.6 (1)/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="D:/Front End/startbootstrap-freelancer-master/startbootstrap-freelancer-master/canvasjs-1.9.6 (1)/jquery.canvasjs.min.js"></script>
+
+	<script>
+
+   			
+   			var xhr= new XMLHttpRequest();
+			xhr.addEventListener("readystatechange",changeHandler);
+  		window.onload=function(){
+  		
+  		  		  		  		
+  		  		  setInterval(function(){
+  		  		  xhr.open("get","http://54.89.16.117:8080/hello",true);
+
+  		  		  xhr.send();
+  		  		  },1000)			
+  					
+
+  				
+		}  	
+		
+	
+
+var data;
+
+function  changeHandler(){
+
+			if (xhr.readyState==4 && xhr.status==200){
+           			data=xhr.responseText;
+           			console.log(data);
+           				
+					var val=[];
+					val=data.split(",");
+																
+											
+					var slot1=val[0].split(":");
+					var status1=val[1].split(":");
+
+					var slot2=val[2].split(":");
+					var status2=val[3].split(":");
+
+					var slot3=val[4].split(":");
+					var status3=val[5].split(":");
+
+
+					var slot4=val[6].split(":");
+					var status4=val[7].split(":");
+
+
+				   			
+           			var elm=document.getElementById("full");
+           			if((parseInt(status1[1])===1)&&(parseInt(status2[1])===1)&&(parseInt(status3[1])===1)&&(parseInt(status4[1])===1)){
+           				elm.style.display="block";
+           				$("#errModal").modal();
+           				}
+           			else{
+           				elm.style.display="none";
+           				$("#errModal").modal("hide");          			
+           		}
+           			
+           			
+           			
+
+ 					var elm1=document.getElementsByClassName("box")[3];
+ 						if(parseInt(status1[1])===1){
+    
+  							elm1.style.backgroundColor="#990000";
+  						}
+  						else{
+  							elm1.style.backgroundColor="green";
+
+  						
+  						}
+  						
+  						 var elm2=document.getElementsByClassName("box")[2];
+ 						if(parseInt(status2[1])===1){
+    
+  							elm2.style.backgroundColor="#990000";
+  						}
+  						else{
+  							elm2.style.backgroundColor="green";
+
+  						
+  						}
+
+						var elm3=document.getElementsByClassName("box")[1];
+ 						if(parseInt(status3[1])===1){
+    
+  							elm3.style.backgroundColor="#990000";
+  						}
+  						else{
+  							elm3.style.backgroundColor="green";
+
+  						
+  						}
+
+						
+  						var elm4=document.getElementsByClassName("box")[0];
+  						
+ 						if(parseInt(status4[1])===1){
+    
+  							elm4.style.backgroundColor="#990000";
+  						}
+  						else{
+  							elm4.style.backgroundColor="green";
+
+  						
+  						}
+  						
+  						
+
+  						
+  						
+  			}
+  			
+
+
+
+}
+
+
+
+
+	  		
+  		</script>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Smart Parking</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Floor 1</a>
+                        
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio1">Floor 2</a>
+                    </li>
+                    <li class="page-scroll">
+                                               
+<div class="dropdown">
+  <button class="dropbtn">ANALYSIS</button>
+  <div class="dropdown-content">
+    <a href="dailly.html">DAILY ANALYSIS</a>
+    <a href="monthly.html">MONTHLY ANALYSIS</a>
+    <a href="yearly.html">YEARLY ANALYSIS</a>
+  </div>
+</div>
+                        
+                    </li>
+
+
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/422201510057PMcarparkingmanagementsystem---Why-Need.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Smart Parking</span>
+                        <hr class="star-light">
+                        <span class="skills"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floor 1 section-->
+    <section id="portfolio">
+    <div class="container">
+
+     <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Floor 1</h2>
+                    <hr class="star-primary">
+                </div>
+                
+                
+                
+                <div class="col-lg-12 text-center fubox" id="full" style="display:none">
+                    <h4>Parking Full</h4>
+                 </div>
+
+                           
+			 </div>
+            <br>
+
+   	<div class="container floor">
+		<div class="row content">
+		<div class="row content" style="margin-left:-30px; margin-right:-40px">
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-4</h4>
+			</div>
+			<div class="col-lg-1 box">
+				<h4 align="center">Slot-3</h4>
+			</div>
+			<div class="col-lg-1 box">
+				<h4 align="center">Slot-2</h4>
+			</div>
+			<div class="col-lg-1 box">
+				<h4 align="center">Slot-1</h4>
+			</div>
+			<div class="col-lg-1 box">
+				<h4 align="center">Slot-0</h4>
+			</div>
+
+			<div class="col-lg-1 box22">
+				<h4 align="center">Entry</h4>
+			</div>
+			<div class="col-lg-1 box3">
+				<h4 align="center" style="line-height:29px">Exit</h4>
+			</div>
+
+			<div class="col-lg-1 box101 " id="f1id0">
+				<h4 align="center">Slot-19</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-18</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-17</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-16</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-15</h4>
+			</div>
+		</div>
+			<div class="row content"></div>
+			<div class="wall">
+				<img src="img/path.png" class="wall" align="center" />
+
+			</div>
+
+			<div class="row content">
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-5</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-6</h4>
+				</div>                                            
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-7</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-8</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-9</h4>
+				</div>
+
+				<div class="col-lg-1 box2"></div>
+				<div class="col-lg-1 box4"></div>
+
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-10</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-11</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-12</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-13</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-14</h4>
+				</div>
+
+			</div>
+
+		</div>                                                                         
+	</div>
+
+	<div class="row content">
+		<div class="col-md-1 wallspace"></div>
+	</div>                                     
+
+	    </div>
+    
+    </section>
+	<!-- Floor 2 Section -->
+    <section id="portfolio1">
+    <div class="container">
+
+     <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Floor 2</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <br>
+
+   	<div class="container floor">
+		<div class="row content">
+		<div class="row content" style="margin-left:-30px; margin-right:-40px">
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-4</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-3</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-2</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-1</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-0</h4>
+			</div>
+
+			<div class="col-lg-1 box22">
+				<h4 align="center">Entry</h4>
+			</div>
+			<div class="col-lg-1 box3">
+				<h4 align="center" style="line-height:29px">Exit</h4>
+			</div>
+
+			<div class="col-lg-1 box101 " id="id0">
+				<h4 align="center">Slot-19</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-18</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-17</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-16</h4>
+			</div>
+			<div class="col-lg-1 box101 ">
+				<h4 align="center">Slot-15</h4>
+			</div>
+		</div>
+			<div class="row content"></div>
+			<div class="wall">
+				<img src="img/path.png" class="wall" align="center" />
+
+			</div>
+
+			<div class="row content">
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-5</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-6</h4>
+				</div>                                            
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-7</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-8</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-9</h4>
+				</div>
+
+				<div class="col-lg-1 box2"></div>
+				<div class="col-lg-1 box4"></div>
+
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-10</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-11</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-12</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-13</h4>
+				</div>
+				<div class="col-lg-1 box101 ">
+					<h4 align="center">Slot-14</h4>
+				</div>
+
+			</div>
+
+		</div>                                                                         
+	</div>
+
+	<div class="row content">
+		<div class="col-md-1 wallspace"></div>
+	</div>                                     
+
+
+   
+    </div>
+    </section>
+
+    
+    <!-- Contact Section -->
+    <section  class="success"  id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Contact Me</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p style="text-align:center">&nbsp;Plot No. 8 & 9, IT Park Road
+                            <br>Persistent Systems Ltd.
+                            <br>MIDC, Parsodi 
+                            <br> Nagpur, Maharashtra
+                            <br>Pin: 440022
+                            <br> Phone No : 9898679801
+                            </p>
+                            
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                   
+                    </div>
+                    <div class="footer-col col-md-6">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://www.facebook.com/" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/collections/featured" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/login" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://in.linkedin.com/" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://dribbble.com/" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-6">
+                        <h3>About Smart Parking</h3>
+                        <p>Smart Parking is a Web based service created by <a href="http://startbootstrap.com"> IOT Team</a>.</p>
+                    </div>
+                </div>
+            </div>
+        
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; IOT Team Persistent Systems Ltd. 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+	
+	<!-- parking full modal -->
+	<div class="modal fade" id="errModal" role="dialog">
+    <div class="modal-dialog modal-lg" style="width:22%">
+      <div class="modal-content">
+        <div class="modal-body">
+            <center>
+            <h3 style="width: 150px;height: 50px;background-color:yellow;margin:auto;">Parking Full</h3>
+            <br><br>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><h>Close</h></button>
+            </center>
+        </div>        
+      	</div>
+    	</div>
+  	</div>
+    
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
+
+</body>
+
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

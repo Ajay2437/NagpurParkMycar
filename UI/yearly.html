@@ -1,0 +1,174 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>CanvasJS Chart jQuery Plugin</title>
+<style>
+ 
+	.x-axis{
+		font-size:30px;
+		color:teal;
+		font-family:Arial, Helvetica, sans-serif;
+	}
+	.y-axis{
+		font-size:20px;
+		color:teal;e
+		font-family:Arial, Helvetica, sans-serif;
+	}
+
+	
+</style>
+<script type="text/javascript" src="canvasjs-1.9.6 (1)/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="canvasjs-1.9.6 (1)/jquery.canvasjs.min.js"></script>
+<script type="text/javascript">
+/*
+			var xhr= new XMLHttpRequest();
+			xhr.addEventListener("readystatechange",changeHandler);
+  			window.onload=function(){
+  		
+  		  		  		  		
+  		  		  setInterval(function(){
+  		  			 xhr.open("get","http://54.89.16.117:8080/chart",true);
+  		  		  	xhr.send();
+  		  		  },1000)			
+  					
+
+  				
+		}  	
+	var data;
+	var str="";
+
+	function  changeHandler(){
+
+			if (xhr.readyState==4 && xhr.status==200){
+           			data=xhr.responseText;
+           			console.log(data);
+           			var val=data.split(",");
+           			var v=[];
+           			var slot=[];
+           			var intime=[];
+           			var outtime=[];
+           			var l=[];
+           			for(var i=1,j=0;i<val.length;i+=4,j++){
+           			           			
+
+           			slot[j]=val[i];
+           			
+           			           			
+           			}
+           			
+           			for(var i=2,j=0;i<val.length;i+=4,j++){
+           			           			
+
+           			intime[j]=val[i];
+           			
+           			           			
+           			}
+           			
+           			for(var i=3,j=0;i<val.length;i+=4,j++){
+           			           			
+
+           			outtime[j]=val[i];
+           			
+           			           			
+           			}
+           			var slt=[];
+           			var init=[];
+           			var out=[];
+           			for(var i=0;i<slot.length;i++){
+           				var temp=slot[i].split(":");
+           				slt[i]=temp[1];
+           			
+           			}
+           			
+           			for(var i=0;i<intime.length;i++){
+           				var temp=intime[i].split("T");
+           				init[i]=temp[1];
+           			
+           			}
+
+
+					for(var i=0;i<outtime.length;i++){
+           				var temp=outtime[i].split("T");
+           				out[i]=temp[1];
+
+           			
+           			}
+
+					var duration=[];
+					for(var i=0;i<init.length;i++){
+						var temp1=init[i].split(":");
+						var temp2=out[i].split(":");
+						var h1,h2,m1,m2,s1,s2;
+						h1=temp1[0];
+						h2=temp2[0];
+						
+						m1=temp1[1];
+						m2=temp2[1];
+						
+						s1=temp1[2];
+						s2=temp2[2];
+						
+						duration[i]=((((parseInt(h2)*3600)-(parseInt(h1)*3600))+((parseInt(m2)*60)-(parseInt(m1)*60))+(parseInt(s2)-parseInt(s1))))/3600;
+
+
+					
+					}
+					
+					for(var i=0;i<slt.length;i++){
+					str=str.concat("{x: "+parseInt(slt[i])+",y: "+parseInt(duration[i])+"},");
+					
+					}
+           		
+           			
+     			}
+     	}      				
+
+
+*/
+$(function () {
+
+	//Better to construct options first and then pass it as a parameter
+	var options = {
+		exportEnabled: true,
+                animationEnabled: true,
+		title: {
+			text: "Exporting Chart as Image"
+		},
+		data: [
+		{
+			type: "bar", //change it to line, area, bar, pie, etc
+			dataPoints: [
+			
+				{ x:1 , y: 0},
+				{ x: 7.5, y: 1 },
+				{ x: 2.5, y: 2 },
+				{ x: 5.5, y: 3 },
+				{ x: 2.9, y: 4 }
+				/*
+				{ x: 8.7, y: 5},
+				{ x: 3.5, y: 6 },
+				{ x: 7.7, y: 7 },
+				{ x: 4.5, y: 8 }
+				*/
+			]
+		}
+		]	};
+
+	$("#chartContainer").CanvasJSChart(options);
+
+});
+
+</script>
+</head>
+<body >
+                    
+  <div> <a href="index.html" style="font-size:25px ;background-color:#18bc9c;color:white">HOME</a></div>              
+
+<div class="y-axis"> <p align="left"><b>PARKING SLOT NO</b></p></div>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<div class="x-axis"> <p align="center"><b>TIME</b></p></div>
+</body>
+
+</html>
